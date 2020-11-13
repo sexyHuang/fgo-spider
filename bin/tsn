@@ -1,0 +1,16 @@
+#!/bin/sh
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+nodemodules="$basedir/../node_modules/"
+
+case `uname` in
+    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+esac
+
+if [ -x "$nodemodules/node" ]; then
+  "$nodemodules/node"  "$nodemodules/ts-node/dist/bin.js" "-r" "tsconfig-paths/register" "$@" "--files"
+  ret=$?
+else 
+  node  "$nodemodules/ts-node/dist/bin.js" "-r" "tsconfig-paths/register" "$@" "--files"
+  ret=$?
+fi
+exit $ret
