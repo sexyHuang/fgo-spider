@@ -4,7 +4,8 @@ import imageMap from 'output/imageMap';
 import { BASE_PATH, LocalPath } from 'src/const';
 import { ServantBriefObj } from 'src/types';
 import getImageMapString from 'src/dataStr/getImageMapString';
-import download from './download';
+import { download2 } from './download';
+import ServantDetails from './ServantDetails';
 
 const getType = (key: string) => {
   if (/^card[1-5]$/.test(key)) return 'card';
@@ -44,6 +45,50 @@ class ImageManager {
       }
     }
     hasChange && (await this.save());
+  }
+  async updateLie({ name_link }: ServantBriefObj) {
+    const { map } = this;
+    let hasChange = false;
+    const servantDetail = new ServantDetails(name_link);
+    const srcs = await servantDetail.getServantLieImages();
+    for (let src of srcs) {
+      if (!src || map.has(src)) continue;
+      hasChange = true;
+      map.set(src, {
+        url: `${BASE_PATH}${src}`,
+        type: `lie/${name_link}`
+      });
+    }
+    console.log(`${name_link}立绘数据抓取完成`);
+
+    servantDetail.closePage();
+    return hasChange;
+  }
+
+  async updateLies(datas: ServantBriefObj[], patchSize = 10) {
+    console.log('开始缓存立绘数据...');
+    let startIdx = 0;
+    let total = datas.length;
+    let hasChange = false;
+    let i = 0;
+    while (startIdx < total) {
+      const endIdx = startIdx + patchSize;
+      const promiseList = datas.slice(startIdx, endIdx).map(obj =>
+        this.updateLie(obj).then(changed => {
+          hasChange = changed;
+        })
+      );
+      try {
+        await Promise.all(promiseList);
+        hasChange && (await this.save());
+        console.log(`第${i++}批数据缓存完成。`);
+        hasChange = false;
+      } catch (e) {
+        // do nothing
+      }
+      startIdx = endIdx;
+    }
+    console.log('立绘数据缓存完成。');
   }
   getUnDownloadList() {
     return [...this.map].filter(item => !item[1].localPath);
@@ -90,7 +135,7 @@ class ImageManager {
   async downloadImage(url: string, _path: string, filename: string) {
     const targetPath = path.join(LocalPath.ImagePath, _path);
     await fs.mkdir(targetPath, { recursive: true });
-    return download(url, path.join(targetPath, filename));
+    return download2(url, path.join(targetPath, filename));
   }
 }
 
