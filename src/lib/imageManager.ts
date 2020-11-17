@@ -7,6 +7,7 @@ import { ServantBriefObj } from 'src/types';
 import getImageMapString from 'src/dataStr/getImageMapString';
 import { download2 } from './download';
 import ServantDetails from './ServantDetails';
+import PatchDownloader from './PatchDownloader';
 
 const getType = (key: string) => {
   if (/^card[1-5]$/.test(key)) return 'card';
@@ -99,51 +100,45 @@ class ImageManager {
   getUnDownloadList() {
     return [...this.map].filter(item => !item[1].localPath);
   }
-  async downloadCachedImages(patchSize = 10) {
+  downloadCachedImages(patchSize = 10) {
     console.log('批量下载任务开始...');
     const SAVE_PATCH_SIZE = 50;
     const imgs2Download = this.getUnDownloadList();
     const total = imgs2Download.length;
     let successCount = 0;
     let lastSaveCount = 0;
-    let startIdx = 0;
     let i = 0;
-    while (startIdx < total) {
-      const endIdx = startIdx + patchSize;
-      const promiseList = imgs2Download.slice(startIdx, endIdx).map(val => {
-        const [key, { url, type }] = val;
-        return this.downloadImage(url, type, key.split('/').pop()!)
-          .then(res => {
-            console.log(decodeURI(key), '下载成功');
-            successCount += 1;
-            this.map.set(key, {
-              url,
-              type,
-              localPath: res
-            });
-          })
-          .catch(res => {
-            console.log(res);
-            console.log(decodeURI(key), '下载失败。');
+    const patchDownloader = new PatchDownloader(this.downloadImage, patchSize);
+    const promiseList = imgs2Download.map(([key, { url, type }]) =>
+      patchDownloader
+        .download(url, type, key.split('/').pop()!)
+        .then(async res => {
+          console.log(decodeURI(key), '下载成功');
+          successCount += 1;
+          this.map.set(key, {
+            url,
+            type,
+            localPath: res
           });
-      });
-      try {
-        await Promise.all(promiseList);
-        if (successCount - lastSaveCount >= SAVE_PATCH_SIZE) {
-          await this.save();
-          lastSaveCount = successCount;
-          console.log(`第${i++}批下载完成已记录。`);
-        }
-      } catch (e) {
-        // do nothing
-      }
-
-      startIdx = endIdx;
-    }
-    successCount - lastSaveCount > 0 && (await this.save());
-    console.log(
-      `下载任务完成，共${total}张图片待下载，成功下载${successCount}张。`
+          if (
+            successCount - lastSaveCount >= SAVE_PATCH_SIZE ||
+            successCount >= total
+          ) {
+            await this.save();
+            lastSaveCount = successCount;
+            console.log(`第${i++}批下载完成已记录。`);
+          }
+        })
+        .catch(res => {
+          console.log(res);
+          console.log(decodeURI(key), '下载失败。');
+        })
     );
+    return Promise.all(promiseList).then(() => {
+      console.log(
+        `下载任务完成，共${total}张图片待下载，成功下载${successCount}张。`
+      );
+    });
   }
   async downloadImage(url: string, _path: string, filename: string) {
     const targetPath = path.join(LocalPath.ImagePath, _path);

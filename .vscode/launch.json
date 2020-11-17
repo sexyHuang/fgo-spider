@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceFolder}/src/scripts/downloadServantLie.ts"]
+      "args": ["${workspaceFolder}/other/1.ts"]
     }
   ]
 }
