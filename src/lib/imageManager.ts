@@ -58,12 +58,13 @@ class ImageManager {
     const servantDetail = new ServantDetails(name_link);
     const srcs = await servantDetail.getServantLieImages();
     console.log(srcs);
-    for (let src of srcs) {
+    for (let [idx, src] of srcs.entries()) {
       if (!src || map.has(src)) continue;
       hasChange = true;
       map.set(src, {
         url: `${BASE_PATH}${src}`,
-        type: `lie/${name_link}`
+        type: `lie/${name_link}`,
+        saveName: `lie_${idx}.${src.split('.').pop()!}`
       });
     }
     console.log(`${name_link}立绘数据抓取完成`);
@@ -71,7 +72,31 @@ class ImageManager {
     servantDetail.closePage();
     return hasChange;
   }
-
+  /** @deprecated */
+  async formateLie() {
+    let oldType = '';
+    const lieImages = [...this.map].reduce((prev, curr) => {
+      const [key, { type, localPath }] = curr;
+      if (!/lie/.test(type)) return prev;
+      if (oldType === type) prev[prev.length - 1].push([key, localPath!]);
+      else {
+        prev.push([[key, localPath!]]);
+        oldType = type;
+      }
+      return prev;
+    }, [] as [string, string][][]);
+    const reg = /(?<before>.*\\)*(.+)(?<after>\.[^.]*)/;
+    for (let lists of lieImages) {
+      for (let [idx, [key, path]] of lists.entries()) {
+        const newPath = path.replace(reg, `$<before>lie_${idx}$<after>`);
+        await fs.rename(path, newPath);
+        console.log(`${path}重命名为${newPath}`);
+        const oldMap = this.map.get(key)!;
+        this.map.set(key, { ...oldMap, localPath: newPath });
+      }
+    }
+    await this.save();
+  }
   async updateLies(datas: ServantBriefObj[], patchSize = 10) {
     console.log('开始缓存立绘数据...');
     let startIdx = 0;
@@ -109,9 +134,9 @@ class ImageManager {
     let lastSaveCount = 0;
     let i = 0;
     const patchDownloader = new PatchDownloader(this.downloadImage, patchSize);
-    const promiseList = imgs2Download.map(([key, { url, type }]) =>
+    const promiseList = imgs2Download.map(([key, { url, type, saveName }]) =>
       patchDownloader
-        .download(url, type, key.split('/').pop()!)
+        .download(url, type, saveName || key.split('/').pop()!)
         .then(async res => {
           console.log(decodeURI(key), '下载成功');
           successCount += 1;

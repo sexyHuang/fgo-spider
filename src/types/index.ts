@@ -40,4 +40,5 @@ export type ImageItem = {
   url: string;
   type: string;
   localPath?: string;
+  saveName?: string;
 };

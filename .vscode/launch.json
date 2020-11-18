@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceFolder}/other/1.ts"]
+      "args": ["${workspaceFolder}/src/scripts/formateLieNames.ts"]
     }
   ]
 }
