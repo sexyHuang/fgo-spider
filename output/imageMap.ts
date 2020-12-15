@@ -14673,6 +14673,134 @@ const imageMap = new Map<string, ImageItem>([
       "type": "lie/阿蒂拉",
       "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\阿蒂拉\\lie_4.png"
     }
+  ],
+  [
+    "/images/5/53/Servant297.jpg",
+    {
+      "url": "https://fgo.wiki//images/5/53/Servant297.jpg",
+      "type": "avatar",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\avatar\\Servant297.jpg"
+    }
+  ],
+  [
+    "/images/2/20/Servant298.jpg",
+    {
+      "url": "https://fgo.wiki//images/2/20/Servant298.jpg",
+      "type": "avatar",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\avatar\\Servant298.jpg"
+    }
+  ],
+  [
+    "/images/9/99/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E5%88%9D%E5%A7%8B.png",
+    {
+      "url": "https://fgo.wiki//images/9/99/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E5%88%9D%E5%A7%8B.png",
+      "type": "lie/芦屋道满",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\芦屋道满\\lie_0.png"
+    }
+  ],
+  [
+    "/images/b/b1/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E4%B8%80%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/b/b1/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E4%B8%80%E7%A0%B4.png",
+      "type": "lie/芦屋道满",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\芦屋道满\\lie_1.png"
+    }
+  ],
+  [
+    "/images/3/3c/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E4%B8%89%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/3/3c/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E4%B8%89%E7%A0%B4.png",
+      "type": "lie/芦屋道满",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\芦屋道满\\lie_2.png"
+    }
+  ],
+  [
+    "/images/a/a5/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E6%BB%A1%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/a/a5/%E8%8A%A6%E5%B1%8B%E9%81%93%E6%BB%A1%E6%BB%A1%E7%A0%B4.png",
+      "type": "lie/芦屋道满",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\芦屋道满\\lie_3.png"
+    }
+  ],
+  [
+    "/images/7/70/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E5%88%9D%E5%A7%8B.png",
+    {
+      "url": "https://fgo.wiki//images/7/70/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E5%88%9D%E5%A7%8B.png",
+      "type": "lie/渡边纲",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\渡边纲\\lie_0.png"
+    }
+  ],
+  [
+    "/images/7/78/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E4%B8%80%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/7/78/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E4%B8%80%E7%A0%B4.png",
+      "type": "lie/渡边纲",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\渡边纲\\lie_1.png"
+    }
+  ],
+  [
+    "/images/4/44/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E4%B8%89%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/4/44/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E4%B8%89%E7%A0%B4.png",
+      "type": "lie/渡边纲",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\渡边纲\\lie_2.png"
+    }
+  ],
+  [
+    "/images/2/2d/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E6%BB%A1%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/2/2d/%E6%B8%A1%E8%BE%B9%E7%BA%B2%E6%BB%A1%E7%A0%B4.png",
+      "type": "lie/渡边纲",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\渡边纲\\lie_3.png"
+    }
+  ],
+  [
+    "/images/f/fa/Servant299.jpg",
+    {
+      "url": "https://fgo.wiki//images/f/fa/Servant299.jpg",
+      "type": "avatar",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\avatar\\Servant299.jpg"
+    }
+  ],
+  [
+    "/images/5/58/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E5%88%9D%E5%A7%8B.png",
+    {
+      "url": "https://fgo.wiki//images/5/58/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E5%88%9D%E5%A7%8B.png",
+      "type": "lie/伊吹童子",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\伊吹童子\\lie_0.png"
+    }
+  ],
+  [
+    "/images/d/d5/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E4%B8%80%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/d/d5/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E4%B8%80%E7%A0%B4.png",
+      "type": "lie/伊吹童子",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\伊吹童子\\lie_1.png"
+    }
+  ],
+  [
+    "/images/1/14/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E4%B8%89%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/1/14/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E4%B8%89%E7%A0%B4.png",
+      "type": "lie/伊吹童子",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\伊吹童子\\lie_2.png"
+    }
+  ],
+  [
+    "/images/2/27/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E6%BB%A1%E7%A0%B4.png",
+    {
+      "url": "https://fgo.wiki//images/2/27/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E6%BB%A1%E7%A0%B4.png",
+      "type": "lie/伊吹童子",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\伊吹童子\\lie_3.png"
+    }
+  ],
+  [
+    "/images/5/59/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E7%81%B5%E8%A1%A31.png",
+    {
+      "url": "https://fgo.wiki//images/5/59/%E4%BC%8A%E5%90%B9%E7%AB%A5%E5%AD%90%E7%81%B5%E8%A1%A31.png",
+      "type": "lie/伊吹童子",
+      "localPath": "D:\\Git\\myGit\\fgo-spider\\images\\lie\\伊吹童子\\lie_4.png"
+    }
   ]
 ]);
 

@@ -12,7 +12,7 @@ const itemTransformer = (value: string) => {
 
   return !value || isNaN(Number(value)) ? value : Number(value);
 };
-const cachePath = path.join(LocalPath.DataPath, 'brifeJson.ts');
+const cachePath = path.join(LocalPath.DataPath, 'briefJson.ts');
 
 type StringMap = { [key in keyof ServantBriefObj]: string };
 const getOriginBriefData = async () => {
