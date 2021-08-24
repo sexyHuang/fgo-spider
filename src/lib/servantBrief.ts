@@ -55,9 +55,14 @@ class ServantBrief {
     this.oldData = this._data;
     this._data = data;
   }
+
+  genBriefFile(path: string, data: T) {
+    return fs.writeFile(path, getServantBriefCacheString(data), 'utf-8');
+  }
+
   private async save() {
     const { _data: data } = this;
-    await fs.writeFile(cachePath, getServantBriefCacheString(data), 'utf-8');
+    await this.genBriefFile(cachePath, data);
   }
 
   async update() {

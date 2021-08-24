@@ -1,8 +1,8 @@
 import { exit } from 'process';
-import servantBrief from 'src/lib/servantBrief';
+import genBriefJson from './lib/genBriefJson';
 
 async function main() {
-  console.log(servantBrief.data);
+  await genBriefJson();
   exit();
 }
 

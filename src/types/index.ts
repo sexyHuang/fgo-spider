@@ -42,3 +42,11 @@ export type ImageItem = {
   localPath?: string;
   saveName?: string;
 };
+
+type NonUndefined<A> = A extends undefined ? never : A;
+
+export type Keys<T, U> = NonUndefined<
+  {
+    [K in keyof T]-?: T[K] extends U ? K : never;
+  }[keyof T]
+>;

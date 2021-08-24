@@ -173,6 +173,9 @@ class ImageManager {
     await fs.mkdir(targetPath, { recursive: true });
     return download2(url, downloadPath);
   }
+  get(key: string) {
+    return this.map.get(key);
+  }
 }
 
 const imageManager = new ImageManager();

@@ -1,4 +1,6 @@
 import { exit } from 'process';
+import genBriefJson from 'src/lib/genBriefJson';
+
 import imageManager from 'src/lib/imageManager';
 import servantBrief from 'src/lib/servantBrief';
 
@@ -15,6 +17,8 @@ const main = async () => {
     await imageManager.updateLies(newData);
     // 下载已获取图片
     await imageManager.downloadCachedImages();
+    // 生成简要列表JSON（图片路径为本地路径）
+    await genBriefJson();
   }
   exit();
 };
