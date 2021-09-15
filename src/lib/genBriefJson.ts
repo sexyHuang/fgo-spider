@@ -19,7 +19,11 @@ export default function genBriefJson() {
     JSON.stringify(
       servantBrief.data.map(item => {
         for (let key of imagesKeys) {
-          item[key] = imageManager.get(item[key])?.localPath ?? item[key];
+          item[key] =
+            imageManager
+              .get(item[key])
+              ?.localPath?.replace(/.+(\\images.+)/, '$1')
+              .replace(/\\/g, '/') ?? item[key];
         }
         return item;
       })
